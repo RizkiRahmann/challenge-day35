@@ -13,7 +13,7 @@ pipeline {
  stages {
    stage('Checkout') {
      steps {
-       git url: 'https://github.com/RizkiRahmann/challenge-day35', branch: 'master'
+       git url: 'https://github.com/RizkiRahmann/challenge-day35.git', branch: 'master'
      }
    }
 
