@@ -1,7 +1,7 @@
 services:
-
   jenkins:
-    image: jenkins/jenkins:lts
+    build:
+      context: ./jenkins
     container_name: jenkins
     ports:
       - "8080:8080"
@@ -9,22 +9,11 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-    privileged: true
     user: root
-    environment:
-      - TERRAFORM_VERSION=1.5.0
+    privileged: true
     networks:
       - cicd-net
-    command: >
-      sh -c "
-      apt-get update && \
-      apt-get install -y docker.io wget unzip git && \
-      wget https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip && \
-      unzip terraform_1.5.0_linux_amd64.zip && \
-      mv terraform /usr/local/bin/ && \
-      rm terraform_1.5.0_linux_amd64.zip && \
-      /usr/local/bin/jenkins.sh
-      "
+
 
   cloudflared:
     image: cloudflare/cloudflared:latest
