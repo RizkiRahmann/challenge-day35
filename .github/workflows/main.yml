@@ -1,0 +1,26 @@
+name: Notify Telegram on Merge to Main/Master
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Send Telegram Notification
+        run: |
+            curl -X POST "https://api.telegram.org/bot7960361581:AAF5nYh_ETdtdMl_hQAA9v2SRFMvPN2S1dY/sendMessage" \
+                -d chat_id=1243717571 \
+                -d text="🚨 Merge to Main/Master Branch 🚨\nA merge has been made to the main/master branch. Please review the changes!"
+            
+            # Membuat keyboard custom
+            curl -X POST "https://api.telegram.org/bot7960361581:AAF5nYh_ETdtdMl_hQAA9v2SRFMvPN2S1dY/sendMessage" \
+                -d chat_id=1243717571 \
+                -d text="Quick Actions:" \
+                -d reply_markup='{"keyboard":[["🔍 Status","📊 Metrics"],["🚀 Deploy","🔄 Rollback"]],"resize_keyboard":true,"one_time_keyboard":true}'
