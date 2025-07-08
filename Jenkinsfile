@@ -10,13 +10,13 @@ pipeline {
    DOCKER_IMAGE = 'rizkirahmnn/springboot-app:latest'
  }
 
- stage('Checkout') {
-    steps {
-      checkout scm
-      // atau
-      git url: 'https://github.com/RizkiRahmann/challenge-day35', branch: 'master'
-    }
-  }
+//  stage('Checkout') {
+//     steps {
+//       checkout scm
+//       // atau
+//       git url: 'https://github.com/RizkiRahmann/challenge-day35', branch: 'master'
+//     }
+//   }
 
    stage('Unit Test & Coverage') {
      steps {
