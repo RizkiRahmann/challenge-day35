@@ -4,7 +4,7 @@ pipeline {
     maven 'Maven 3.8.8'       
     jdk 'Temurin JDK 17'
   }
-
+ 
   environment {
     SONARQUBE_SERVER = 'SonarQube' 
   }
@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/RizkiRahmann/spring-boot-rest-api-unit-tests', branch: 'master'
+        git url: 'https://github.com/RizkiRahmann/challenge-day35', branch: 'master'
       }
     }
 
@@ -34,7 +34,7 @@ pipeline {
               -Dsonar.projectKey=springboot \
               -Dsonar.projectName='springboot' \
               -Dsonar.host.url=http://sonarqube:9000 \
-              -Dsonar.token=sqp_6ecabd0617b884b1e3bfef3113571f1b0decbd8d
+              -Dsonar.token=sqp_752bc5c949cd69e421c607c5df9bc7752085fed4
         """
       }
     }
