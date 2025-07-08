@@ -10,13 +10,12 @@ pipeline {
    DOCKER_IMAGE = 'rizkirahmnn/springboot-app:latest'
  }
 
- stage('Checkout') {
-    steps {
-      git credentialsId: 'github-credentials',
-          url: 'https://github.com/RizkiRahmann/challenge-day35.git', 
-          branch: 'master'
-    }
-  }
+ stages {
+   stage('Checkout') {
+     steps {
+       git url: 'https://github.com/RizkiRahmann/challenge-day35.git', branch: 'master'
+     }
+   }
 
    stage('Unit Test & Coverage') {
      steps {
